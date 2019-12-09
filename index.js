@@ -45,6 +45,6 @@ app.get('/test', function (req, res) {
 
 });
 
-app.listen('https://github.com/MaximilianSteidl/supremedev_backend/', function () {
+app.listen(8080, function () {
   console.log('Example app listening on port 3000!');
 });
