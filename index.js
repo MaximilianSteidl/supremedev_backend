@@ -34,7 +34,7 @@ const Student = mongoose.model('Student', studentSchema);
 
 app.use(cors());
 
-app.get('/test', function (req, res) {
+app.get('/', function (req, res) {
 
   Student.find({})
     .then((students) => {
