@@ -45,6 +45,23 @@ app.get('/', function (req, res) {
 
 });
 
+app.get('/getStudent', function (req, res) {
+
+	console.log(req.query);
+  var query = { "_id" :  req.query.id };
+  console.log("Searching for student with id: " + req.query.id);
+  Student.find(query)
+    .then((students) => {
+      console.log(students);
+	  res.json(students);
+	  
+    })
+
+
+});
+
+
+
 app.listen(8080, function () {
   console.log('Example app listening on port 8080!');
 });
