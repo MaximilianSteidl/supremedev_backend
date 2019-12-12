@@ -61,7 +61,28 @@ app.get('/getStudent', function (req, res) {
 });
 
 
+app.post('/updateStudent', function (req, res) {
+  /*console.log(req.param);
+  console.log(req.params("id"));
+  console.log(req.body("id"));
+  console.log(req.body.id)
+  console.log(req.query);*/
+  //console.log(req);
+  var myquery = { "_id": req.params.id };
+  var newvalues = { $set: {"id"          : req.params.Student_id
+                         , "vorname"     : req.params.vorname
+						// , "nachname"    : req.params.nachname
+						// , "studiengang" : req.params.studiengang
+						// , "wohnort"     : req.params.wohnort
+						// , "semester"    : req.params.semester
+						} };
+  Student.updateOne(myquery, newvalues, function(err, res) {
+    if (err) throw err;
+    console.log("1 Student updated");
+  });
 
+
+});
 app.listen(8080, function () {
   console.log('Example app listening on port 8080!');
 });
