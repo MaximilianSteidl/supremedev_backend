@@ -75,12 +75,13 @@ app.post('/updateStudent', function (req, res) {
 	req.on('end', function () {
 		  var post = qs.parse(body);
 		  var myquery = { "_id": post['id'] };
-		  var newvalues = { $set: {"id"          : post['Student_id']
+		  var newvalues = { $set: {"Student_id"  : post['Student_id']
 								 , "vorname"     : post['vorname']
-								// , "nachname"    : req.params.nachname
-								// , "studiengang" : req.params.studiengang
-								// , "wohnort"     : req.params.wohnort
-								// , "semester"    : req.params.semester
+								 , "nachname"    : post['nachname']
+								 , "studiengang" : post['studiengang']
+								 , "wohnort"     : post['wohnort']
+								 , "semester"    : post['semester']
+								 , "Geburtsdatum": post['birthday']
 								} };
 		  Student.updateOne(myquery, newvalues, function(err, res) {
 			if (err) throw err;
