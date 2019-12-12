@@ -21,7 +21,7 @@ connectToDB();
 
 
 const studentSchema = mongoose.Schema({
-  id: String,
+  Student_id: String,
   vorname: String,
   nachname: String,
   studiengang: String,
@@ -117,6 +117,13 @@ app.post('/insertStudent', function (req, res) {
 		  });
 	});
 });
+
+//CLEAR DATABASE
+/*Student.deleteMany({ }, function (err) {
+  if (err) return handleError(err);
+  // deleted at most one tank document
+});
+*/
 app.listen(8080, function () {
   console.log('Example app listening on port 8080!');
 });
