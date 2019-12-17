@@ -69,7 +69,10 @@ app.post('/updateStudent', function (req, result) {
 		// Too much POST data, kill the connection!
 		// 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
 		if (body.length > 1e6)
-			req.connection.destroy();
+		{
+			console.log("TO MUCH POST DATA");
+			//req.connection.destroy();
+		}
 	});
 
 	req.on('end', function () {
@@ -106,7 +109,10 @@ app.post('/insertStudent', function (req, result) {
 		// Too much POST data, kill the connection!
 		// 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
 		if (body.length > 1e6)
-			req.connection.destroy();
+		{
+			console.log("TO MUCH POST DATA");
+			//req.connection.destroy();
+		}
 	});
 
 	req.on('end', function () {
