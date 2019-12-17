@@ -92,9 +92,9 @@ app.post('/updateStudent', function (req, res) {
 			else
 			{
 				console.log("1 Student updated");
+				res.end('{"success" : "Updated Successfully", "status" : 200}');
 			}
 		  });
-		  res.end('{"success" : "Updated Successfully", "status" : 200}');
 	});
 });
 
@@ -128,9 +128,9 @@ app.post('/insertStudent', function (req, res) {
 			else
 			{
 				console.log("1 Student added");
+				res.end('{"success" : "Inserted Successfully", "status" : 200}');
 			}
 		  });
-		  res.end('{"success" : "Inserted Successfully", "status" : 200}');
 	});
 });
 
