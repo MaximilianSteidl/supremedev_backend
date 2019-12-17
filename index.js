@@ -84,9 +84,17 @@ app.post('/updateStudent', function (req, res) {
 								 , "Geburtsdatum": post['birthday']
 								} };
 		  Student.updateOne(myquery, newvalues, function(err, res) {
-			if (err) throw err;
-			console.log("1 Student updated");
+			if (err) 
+			{
+				console.log(err);
+				throw err;
+			}
+			else
+			{
+				console.log("1 Student updated");
+			}
 		  });
+		  res.end('{"success" : "Updated Successfully", "status" : 200}');
 	});
 });
 
@@ -112,9 +120,17 @@ app.post('/insertStudent', function (req, res) {
 								 , "Geburtsdatum": post['birthday']
 								 };
 		  Student.create(values, function(err, res) {
-			if (err) throw err;
-			console.log("1 Student added");
+			if (err) 
+			{
+				console.log(err);
+				throw err;
+			}
+			else
+			{
+				console.log("1 Student added");
+			}
 		  });
+		  res.end('{"success" : "Inserted Successfully", "status" : 200}');
 	});
 });
 
