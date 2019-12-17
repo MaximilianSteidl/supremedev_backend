@@ -61,7 +61,7 @@ app.get('/getStudent', function (req, res) {
 });
 
 
-app.post('/updateStudent', function (req, res) {
+app.post('/updateStudent', function (req, result) {
     var body = '';
 	req.on('data', function (data) {
 		body += data;
@@ -87,18 +87,18 @@ app.post('/updateStudent', function (req, res) {
 			if (err) 
 			{
 				console.log(err);
-				throw err;
+				//throw err;
 			}
 			else
 			{
 				console.log("1 Student updated");
-				res.end('{"success" : "Updated Successfully", "status" : 200}');
+				result.end('{"success" : "Updated Successfully", "status" : 200}');
 			}
 		  });
 	});
 });
 
-app.post('/insertStudent', function (req, res) {
+app.post('/insertStudent', function (req, result) {
     var body = '';
 	req.on('data', function (data) {
 		body += data;
@@ -123,23 +123,24 @@ app.post('/insertStudent', function (req, res) {
 			if (err) 
 			{
 				console.log(err);
-				throw err;
+				//throw err;
 			}
 			else
 			{
 				console.log("1 Student added");
-				res.end('{"success" : "Inserted Successfully", "status" : 200}');
+				result.end('{"success" : "Inserted Successfully", "status" : 200}');
 			}
 		  });
 	});
 });
 
 //CLEAR DATABASE
-/*Student.deleteMany({ }, function (err) {
+/*var q = { "vorname" :  "Mario"}; 
+Student.deleteMany(q, function (err) {
   if (err) return handleError(err);
   // deleted at most one tank document
-});
-*/
+});*/
+
 app.listen(8080, function () {
   console.log('Example app listening on port 8080!');
 });
