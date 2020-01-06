@@ -147,6 +147,38 @@ Student.deleteMany(q, function (err) {
   // deleted at most one tank document
 });*/
 
+app.post('/deleteStudent', function (req, result) {
+    var body = '';
+	req.on('data', function (data) {
+		body += data;
+
+		// Too much POST data, kill the connection!
+		// 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
+		if (body.length > 1e6)
+		{
+			console.log("TO MUCH POST DATA");
+			//req.connection.destroy();
+		}
+	});
+
+	req.on('end', function () {
+		  var post = qs.parse(body);
+		  var myquery = { "_id": post['id'] };
+		  Student.deleteOne(myquery, function(err, res) {
+			if (err) 
+			{
+				console.log(err);
+				//throw err;
+			}
+			else
+			{
+				console.log("1 Student deleted");
+				result.end('{"success" : "Deleted Successfully", "status" : 200}');
+			}
+		  });
+	});
+});
+
 app.listen(8080, function () {
   console.log('Example app listening on port 8080!');
 });
