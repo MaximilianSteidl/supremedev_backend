@@ -182,3 +182,11 @@ app.post('/deleteStudent', function (req, result) {
 app.listen(8080, function () {
   console.log('Example app listening on port 8080!');
 });
+
+app.get('/exportStudents', function (req, res) {
+  Student.find({})
+    .then((students) => {
+      //console.log(students);
+	  res.json(students);
+    })
+});
